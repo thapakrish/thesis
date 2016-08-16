@@ -1,0 +1,26 @@
+# copied from https://github.com/hebda/thesis/blob/master/.gitignore
+# should work for me also
+
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.brf
+
+## from emacs (doesn't work though)
+tex/*.tex~
+
+## other
+*.run.xml
+*.bak
