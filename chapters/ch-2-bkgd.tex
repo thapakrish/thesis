@@ -14,11 +14,44 @@ The Standard Model of particle physics describes the interaction between element
 
 
 
-\subsection {Elementary Particles}
-According to the Standard Model, matter consists of 12 particles of spin 1/2 known as fermions each of which has its own antiparticle of opposite spin.
+\begin{figure}[htbp!]
+\centering
+  \includegraphics[width=0.7\textwidth]%
+%    {figures/instrument/25ns_fill_scheme.png}% picture filename
+%  {figures/model/Standard_Model_of_Elementary_Particles.svg.png}
+  {figures/intro/Standard_Model_of_Elementary_Particles_modified_version}
+	\captionsetup{format=hang}
+  \caption{The Standard Model of Elementary Particle Physics with three generations
+of matter fermions, gauge bosons and a Higgs boson. Figure taken from \cite{wiki:SMfigure}}
+	\label{fig:particles}
+\end{figure}
 
 
-\subsection {Fundamental Forces}
+
+%\subsection {Elementary Particles}
+According to the Standard Model, matter consists of particles of spin 1/2 known as fermions each of which has its own antiparticle of opposite spin. These particles are treated as excitations of fields, and the forces are treated as interactions between these excitations. The interactions happen via exchange of various vector bosons, which are the particle with spin 1. Spin 1/2 particles, also called fermions, are of two types based on how they interact.  The Leptons--electron, muon, tau, and their counterpart nutrinos only experience the electroweak force. The quarks-- up, down, strange, charm, bottom, top experience both the electroweak force and the strong force. Higgs boson has spin 0.
+
+
+\begin{table}
+\begin{center}
+    \begin{tabular}{| l | l | l | l |}
+    \hline
+    {\bf Interaction} & {\bf Strength} & {\bf Mediator} \\ \hline
+    Strong & 10  & Gluon \\ \hline
+    Electromagnetic & $10^{-2}$  & Photon \\ \hline
+    Weak & $10^{-3}$ &   W and Z Bosons\\ \hline
+    Gravitation & $10^{-42}$  & Graviton \\
+    \hline
+    \end{tabular}
+	\captionsetup{format=hang}
+     \caption{Rough order of the interaction strengths and the mediators for interactions.}
+
+\end{center}
+\end{table}
+
+
+The particle content of the SM is summarized in Figure \ref{fig:particles}. Protons and neutrons that make up most of the matter around us are composed of quarks.  Neutrinos, which have very small mass, are electrically neutral and thus only participate in weak interactions.
+
 
 %CERN\footnote{European Organization for Nuclear Research}
 
@@ -38,38 +71,6 @@ According to the Standard Model, matter consists of 12 particles of spin 1/2 kno
 
 
 
-
-\begin{figure}[htbp!]
-\begin{center}
-  \includegraphics[width=0.7\textwidth]%
-%    {figures/instrument/25ns_fill_scheme.png}% picture filename
-%  {figures/model/Standard_Model_of_Elementary_Particles.svg.png}
-  {figures/intro/Standard_Model_of_Elementary_Particles_modified_version}
-	\captionsetup{format=hang}
-
-  \caption{The Standard Model of Elementary Particle Physics with three generations
-of matter fermions, gauge bosons and a Higgs boson. Figure taken from \cite{wiki:SMfigure}}
-\end{center}
-
-\end{figure}
-
-
-\begin{table}
-\begin{center}
-    \begin{tabular}{| l | l | l | l |}
-    \hline
-    {\bf Interaction} & {\bf Strength} & {\bf Theory} & {\bf Mediator} \\ \hline
-    Strong & 10 & Quantum Chromodynamics & Gluon \\ \hline
-    Electromagnetic & $10^{-2}$ & Quantum Electrodynamics & Photon \\ \hline
-    Weak & $10^{-3}$ & Flavordynamics &  W and Z Bosons\\ \hline
-    Gravitation & $10^{-42}$ & Geometrodynamics & Graviton \\
-    \hline
-    \end{tabular}
-     \caption{Rough order of the interaction strengths, the mediator and the theory, which describes
-these interactions}
-
-\end{center}
-\end{table}
 
 
 \section{Luminosity}
@@ -197,8 +198,8 @@ that multiplies eq. \ref{eq:intLumi}.
    \filldraw (2,0) circle (1pt);
 
     \draw [blue,rotate around={-5:(4.2,0)}] (4.3,0) ellipse (2cm and 0.25cm);
-    \draw [->, blue] (6,0.5) -- (4,0.5);
-    \node (draw) at (5,1) {$n_{2}$};%\rho_{2}(x,y,s;s_{0})$};
+    \draw [->, blue] (5,0.5) -- (3,0.5);
+    \node (draw) at (4,1) {$n_{2}$};%\rho_{2}(x,y,s;s_{0})$};
 
 %    \draw [->] (-4,0) -- (0,0) -- (1,0) -- (8,0);
     \draw[->] (-3,0) -- (7,0) node[right] {$z$};
