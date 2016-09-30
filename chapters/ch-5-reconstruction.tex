@@ -1,1 +1,40 @@
+%\subsection{Event Selection and Reconstruction}
+
 \chapter{Event Reconstruction} \label{ch:reconstruction}
+
+%Something about the event reconstruction.
+%Data streams to slink and histograms.
+
+PLT reports the online luminosity value by using the fast-or dataset. Slink data is used offline to parametrize the events and look for corrections to be applied to the luminosity value. In this chapter, reconstructions of events from each PLT data streams is described. Section \ref{sec:telAlign} describes the method used to find the correct alignment of each telescope which is done before track reconstruction. Section \ref{sec:fastor} and section \ref{sec:slink} describe the reconstruction of event from fast-or and slink data.
+
+
+
+\section{Telescope Alignment} \label{sec:telAlign}
+
+%for fastor: about per bin, leakage to neighboring bin, etc.
+%for slink:write something about alignment to motivate tracks, beamspots
+%slink to further characterize the fastor, and provide for extra correction.
+
+%Since PLT is an online luminometer, the luminosity value reported by PLT is from the fast-or data, which uses the zero-counting algorithm. 
+
+PLT data is saved in granular level via the slink streams for offline analysis. Each hit is saved according to it's channel number, bunch number, plane number and the pixel within the plane. In the plane's coordinate system, each pixel can be identified by its row and column number where each row is $150 \mu m$ and each column is $100 \mu m$. This is akin to just the first quarter of cartesian coordinate system with (0, 0) representing plane's leftmost pixel from the lowest row. 
+
+% For this data to be useful, however, knowledge of the correct position of each telescope is equally important. 
+
+Each telescope's position with respect to the CMS coordinate system is known beforehand. In the telescope coordinate system, midpoints of planes 0, 1, 2, are positioned at (0, 0, 0), (0, 0.102, 3.77), and (0, 0.204, 7.54) respectively. Hit positions from each plane are then translated to the CMS coordinate system with (0, 0, 0) at the interaction point to look for patterns in measurement data.
+
+
+A set of hits that pass though all three planes and assumed to be the trace of a moving charged particle are referred to as tracks. This is analogous the the triple coincidence criteria set for fast-or but with few differences. Unlike fast-or, which uses the zero-counting algorithm, tracking algorithm is designed to make multiple tracks from the set of hits and clusters of hits in plane 0, 1, and 2. 
+ 
+For alignment purpose, only the "cleanest" set of tracks are considered, namely the tracks with only 1 hit in plane 0, 1, and 2 each. As a reference, the "ideal" alignment file is used and the tracking algorithm is applied to sets of hits passing the triple-hit criteria. Under ideal assumption, a good track would hit same pixels (rows, columns) in each plane shifted by the predefined alignment of the PLT planes. Tracking algorithm makes a best fit to the three hits in each plane of a telescope, and the residuals are calculated for each such tracks. This step is repeated for large number of tracks and the deviation from the ideal alignment is calculated to generate a final translated alignment file for each data taking period.
+
+%to find the alignment for each telescope during each data taking period. 
+%...Eventually, the correction to be applied to the ideal alignment is calculated using the slopes and residuals via the "rotational residuals."...
+%\cite{} cite analysis note
+
+%, and a correction to the supposed position of each track is made.
+
+%In particular, we define a "track" as a set of events in a telescope for a given BX (each BX is $25 ns$ long), when all three planes register at least 1 hit. This definition is entirely dependent on the way we "align" our telescopes and planes in global coordinate system.
+
+%\subsection{Tracking Algorithm}
+
