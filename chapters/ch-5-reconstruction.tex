@@ -38,3 +38,124 @@ For alignment purpose, only the "cleanest" set of tracks are considered, namely 
 
 %\subsection{Tracking Algorithm}
 
+
+\section{Fast-or triple fold coincidences} \label{sec:fastor}
+% perLS
+%
+Fast-or data stream saves coincidence count for each channel in a form of histogram where the bunch is the bin number. Each histogram gets cleared every nibble (4096 orbits) and sent downstream to be converted to a luminosity value. For each orbit, depending on the number of bunches that are made to collide, each telescope is likely to receive only a few triple-coincidences. Figure \ref{fig:pBXfor} shows coincidence count for all telescopes for Fill 4444 from 2015 in a logy scale, with tall bins representing the filled bunches.
+%If we were to look at just the total number of triple coincidences per BX, we see a clear pattern emerging. As shown in Fig. \ref{fig:pBXfor}, most of the collision events happen for a filled BX.
+
+
+
+\begin{figure}[htbp!]
+  \includegraphics[width=1.0\textwidth]%
+    {figures/FastOR/ncoinc44Log.png}% picture filename
+        \captionsetup{format=hang}
+    \caption{3-fold coincidence count for all channels as a function of bunch crossing, Fill 4444 (2015) }
+      \label{fig:pBXfor}
+\end{figure}
+
+
+For every bunch crossing, only ... are likely to collide as seen in Figure \ref{fig:pileup}. Out of those colliding particles, PLT is expected to receive only some because of the detector's rapidity location, and acceptance region. Each histogram for a given telescope, at the end of a nibble period, receives only around 300 coincidences out of 4096 orbits as shown in figure \ref{fig:pBXfor}. The coincidence count is the boolean count of whether there was some coincidence or not.  For each telescope, coincidence count (N) is then translated to luminosity value via zero-counting algorithm in the form of $-log((4096-N)/4096)$. 
+
+%What is the average coincidence count per BX for all telescopes?
+
+\begin{figure}[htbp!]
+  \includegraphics[width=1.0\textwidth]%
+    {figures/FastOR/allChNB.png}% picture filename
+    \captionsetup{format=hang}    
+    \caption{Coincidence counts for filled bunches count per nibble, Fill 4444 (2015) }
+      \label{fig:coincCount}
+\end{figure}
+
+
+%What is the average coincidence as a function of pileup and beam current?
+
+
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{| l | c |}
+\hline
+Unit & Value \\ \hline
+1 orbit & 11245 Hz  \\ \hline
+1 nibble & 4096 orbits \\ \hline
+1 lumi section & 64 nibbles \\ \hline
+\end{tabular}
+\end{center}
+\caption{Time units}
+\label{tbl:timeUnits}
+\end{table}%
+
+
+
+%\subsubsection{Beam to Beam}
+%\subsubsection{Bunch to Bunch variation}
+%\subsubsection{WBM}
+%\subsubsection{vs Pileup}
+
+
+
+\subsubsection{Contribution from non-colliding bunches}
+As seen in Figure \ref{fig:pBXfor}, coincidences are also recorded for non-colliding bunches. This contribution could be from background, secondary interactions, or spill-over from preceding bins. 
+
+%The contributions from these non-colliding bunches were studied and their half-life was calculated
+
+%\begin{figure}[htbp!]
+%  \includegraphics[width=1.0\textwidth]%
+%    {figures/FastOR/perLS.png}% picture filename
+%    \captionsetup{format=hang}
+%    \caption{PLT Bunch Luminosity for 64 NB sample. Low spillover to unfilled bunch}
+%      \label{fig:pLSfor}
+%\end{figure}
+
+
+%\begin{tikzpicture}
+%    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{figures/FastOR/expoLongGap.png}};
+%    \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+%    \draw[red, dashed,very thick, rotate=0] (2,1) --(2,3) -- (2,5);
+%\end{tikzpicture}
+
+%\begin{figure}[htbp!]
+%\centering
+%\begin{minipage}{.49\textwidth}
+%  \centering
+%	\includegraphics[width=1.0\textwidth]
+%	{figures/FastOR/expoLongGap.png}
+%	%\begin{tikzpicture}
+%%    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{figures/FastOR/expoLongGap.png}};
+%%    \draw[red, dashed,very thick, rotate=0] (1.01,0.5) --(1.01,3) -- (1.01,4);
+%%    \draw [ ->] (5,3) -- (15,3);
+%%	\end{tikzpicture}
+%%    	    \caption{Coincidences vs BX}
+%	    \label{fig:forLT}
+%
+%\end{minipage}%
+%\begin{minipage}{.49\textwidth}
+%  \centering
+%	  \includegraphics[width=1.0\textwidth]%
+%	    {figures/FastOR/expoShortGap.png}% picture filename
+%%	    \caption{Coincidences vs BX, LCB}
+%  \label{fig:forST}
+%
+%\end{minipage}
+%    	    \caption{Contribution from non-colliding bunches}
+%\end{figure}
+
+
+\begin{figure}[htbp!]
+  \includegraphics[width=1.0\textwidth]%
+   {figures/FastOR/expoLongGap.png}
+       \captionsetup{format=hang}    
+    \caption{Exponential drop in contribution from non-colliding bunches as a function of bunch separation from the last filled bunch}
+      \label{fig:forLT}
+
+\end{figure}
+
+
+
+Figure \ref{fig:forLT} shows the exponential decay in contribution as a function of separation between bunches. The first non-colliding bunch is at ~0.1\% of the preceding colliding bunch. Except for the first non-colliding BX immediately after filled BX, exponential drop (defined by tau of $\approx$ 90 BX) can be seen for all gaps. As such, contributions from non-colliding bunches is extremely low.
+
+
+
+
+
