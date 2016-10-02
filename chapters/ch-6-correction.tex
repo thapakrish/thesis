@@ -255,3 +255,90 @@ $\vert S_{x} \vert$ cut & $\vert S_{y} - S_{PLT} \vert $ cut & $R_{x}$ cut (cm) 
 \end{table}%
 
 
+%\subsection{Consistency of relative-luminosity measurements during physics running}
+
+
+%\section{VdM} \label{ch:vdm}
+%\newpage
+\subsection{Maximum Likelihood Fits} \label{sec:mlfit}
+
+Suppose that we have a sample of some n number of independent observations $x_{1}, x_{2}, ..., x_{n}$ from a theoretical distribution $f(x | \theta)$ where $\theta$ is the parameter we would like to find. Let $f(x_{1} | \theta)$ be the probability of observing $x_{1}$ data given $theta$ parameter for function $f$. Then, the probability of observing $x_{1}, x_{2},...,x_{n}$ data is given by the \emph{likelihood} function
+
+\begin{equation}
+L(\theta | x) = f(x_{1} | \theta) f(x_{2} | \theta) \cdot \cdot \cdot f(x_{n} | \theta)
+\end{equation}
+
+Since we have $x_{1}, x_{2},...,x_{n}$ data and we would like to know what $\theta$ is, L is maximized by 
+$$
+\frac{dL}{d\theta} = 0
+$$
+
+For distributions of the exponential nature, maximum of  the logarithm of L can be found via
+$$
+\frac{d(lnL)}{d\theta} = 0
+$$
+The solution to $\hat{\theta}$ is the maximum likelihood $estimator$ for parameter $\theta$ for a given sample. For other samples, $\hat{\theta}$ could be different and thus  $\hat{\theta}$ is a probability distribution. The standard deviation on  $\hat{\theta}$ gives the size of the error in our estimation for true  $\theta$.
+
+
+
+%Bin widths are chosen to be smaller than the experimental resolution.
+
+\subsubsection{Likelyhood Fit of slope-x at vdm}
+
+The alignment of telescopes is such that there is no preference for slopes to have a particular slope in x-direction, if a track truly originates from the interaction point.
+
+$$
+VdM \textunderscore X = {\color {cyan}Gaussian_{core}(\sigma_{1}, \mu_{1})} + f_{1}* {\color {green} Gaussian_{outlier}(\mu_{2},\sigma_{2})}
++ f_{2} * {\color {red} Gaussian(\mu_{3},\sigma_{3})}
+$$
+
+
+\begin{figure}[htbp!]
+\centering
+  \includegraphics[width=0.7\textwidth]%
+    {figures/VdM/VdMSlopeXModel.png}% picture filename
+        \captionsetup{format=hang}
+            \captionsetup{format=hang}
+    \caption{SlopeX model using reconstructed tracks from vdm scan at nominal separation}
+    \label{fig:VdM_Xmodel}
+\end{figure}
+
+Fig \ref{fig:VdM_Xmodel} shows the model used for the $x$-slope of the tracks during VdM Y1 scan Fill 4954. Main signal is dominated by a core Gaussian (red), a broader gaussian (green) and yet another gaussian (dashed blue) that spans the range of $x$-slope. The mean value for all the pdfs is close to zero, which is due to the fact that there is no reason for a track to have any preference in the $x-y$ plane.
+
+% group slope-x and slope-y together?
+
+\subsubsection{Likelyhood Fit of slope-y at vdm}
+
+Middle plane for each telescope is placed 0.102 cm higher(lower) than first(third) plane. Since the length of telescope is 7.5 cm, the $y$-slope of telescope itself is around 0.027 which is what $y$-slopes of tracks is expected to be on average.
+
+\begin{figure}[htbp!]
+\centering
+  \includegraphics[width=0.6\textwidth]%
+    {figures/VdM/VdMSlopeYModel.png}% picture filename
+        \captionsetup{format=hang}
+    \caption{SlopeY model using reconstructed tracks from vdm scan at nominal separation}
+    \label{fig:VdM_Ymodel}
+\end{figure}
+
+
+Fig \ref{fig:VdM_Ymodel} shows the 3 gaussian fit to the slope-$y$ data from VdM Fill Y1 scan. Main signal is dominated by the core gaussian centered at around $0.027$, another gaussian, and one bifircated gaussian with large $\sigma_{1}$ and $\sigma _{2}$. 
+
+$$
+VdM \textunderscore Y = {\color {cyan}Gaussian_{core}(\sigma_{1}, \mu_{1})} + f_{1}* {\color {green} Gaussian_{outlier}(\mu_{2},\sigma_{2})}
++ f_{2} * {\color {red} BiGaussian(\mu_{3},\sigma_{31},\sigma_{32})}
+$$
+
+
+
+
+
+\subsubsection{Combined Fit}
+A combined model is constructed using the parameters fixed for both slope-$x$ and slope-$y$ with a extra pdf on top of vdm-$x$ and vdm-$y$ models. The extra contribution to the pdf is allowed to float with a common fraction f for both slopes. Figure \ref{fig:combinedModel} shows the combined fit to one sample data from a regular fill. Both slope-$x$ and slope-$y$ have a predefined shape of signal taken from the individual fits to slope-$x$ and slope-$y$.
+
+%Both slope-x and slope-y parameters are fed into a model and asked to fit to the VdM data. Ideally, this should produce the null result which is what we find. We then use the parameters and add extra pdf on top of slope-x and slope-y models separately.
+
+
+
+$$
+Combined \textunderscore Fit = \left ( {\color {green}VdM\char`_X} + f* {\color {magenta} Extra \textunderscore x} \right ) \times \left( {\color {green}VdM\char`_Y} + f* {\color {magenta} Extra \textunderscore y} \right)
+$$
