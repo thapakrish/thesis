@@ -342,3 +342,151 @@ A combined model is constructed using the parameters fixed for both slope-$x$ an
 $$
 Combined \textunderscore Fit = \left ( {\color {green}VdM\char`_X} + f* {\color {magenta} Extra \textunderscore x} \right ) \times \left( {\color {green}VdM\char`_Y} + f* {\color {magenta} Extra \textunderscore y} \right)
 $$
+
+\subsection{Fit Validation}
+For each individual fit to slopes, different distributions were tested, including gaussian, polynomials, and double-gaussians. For slope-$x$, for instance, a double gaussian eventually converged back to a gaussian. 
+
+As mentioned earlier, there were 50566 reconstructed tracks from the vdm scan. Some of these tracks, however, came from the non-colliding bunches (5 out of 37 triggered bunches were colliding bunches). Same fit was done for tracks from colliding and non-colliding bunches separately and it was found that there was not much difference in the fit parameters with the changes. 
+
+%Probability mass function
+%For each fit to slopes, each PDF was chosen after careful 
+%
+%The combined model was then fitted to the reconstructed tracks from vdm which assigned 0 fraction to the "extra" stuff which gave a confirmation of the combined model. Furthermore, fitting the model to tracks from only the colliding bunches also gave fraction 0.
+%
+%separated colliding and non-colliding bunches and made a fit. Didn't change much.
+%tweaked gaussians ==> converged to earlier.
+%monte carlo simulation
+
+
+
+
+
+
+
+\section{Results} \label{sec:highlumifit}
+
+\begin{figure}[htbp!]
+  \includegraphics[width=1.0\textwidth]%
+    {figures/VdM/CombinedFit_II.png}% picture filename
+    \caption{Combined Fit to the Model}
+    \label{fig:combinedModel}
+\end{figure}
+
+The combined model is then fitted to reconstructed tracks from regular fills at higher luminosities.  A bifurcated gaussian is used as an extra pdf for slope-$y$, and a regular gaussian was used as an extra pdf on top of slope-$x$ model. Figure \ref{fig:correction} shows the increase in the area under the magenta curve as a function of SBIL. The blue line, 2.2\% + SBIL * 1.4\%, is from correction to 2015 data where $5 \sigma$ cut was applied to slopes and residuals. The black dots which increase with a slope of $0.82$ as a function of SBIL, is from 2016 data where likelihood fit method was applied. Fitted line to the black dots goes all the way back to 0, which is the vdm scan with very low value for SBIL. The dotted lines around the black dots represent the uncertainty in the frac3. 
+
+%Since slope from likelihood fit grows slower
+
+
+
+
+%\section{Results}
+
+
+\begin{figure}
+\centering
+  % trim = {<left> <lower> <right> <upper>}
+  \includegraphics[width=0.8\textwidth, trim = {2.5cm 7.2cm 2.5cm 5cm}, clip]%
+    {figures/VdM/correction.pdf}% picture filename
+    \captionsetup{format=hang}
+    \caption{Coorection as a function of Single Bunch Instantaneous Luminosity (SBIL). The dashed line correspond to the error bars in fraction of non-lumi contribution.}
+    \label{fig:correction}
+\end{figure}
+
+
+%colliding bunches only to understand the sensitivity of combined model 
+%if the combined fit assigns some fraction f. This made almost no difference i.e. the combined model agrees with the 
+
+
+
+%\subsubsection{Residuals}
+%
+%% describe what residuals mean
+%
+%\begin{figure}[htbp!]
+%\centering
+%  % trim = {<left> <lower> <right> <upper>}
+%  \includegraphics[width=0.8\textwidth, trim = {0cm 12cm 23cm 0cm}, clip]%
+%%  \includegraphics[width=0.7\textwidth]%
+%    {figures/VdM/resSample.png}% picture filename
+%    \caption{Sample residual distribution for slope-y from combined fit}
+%    \label{fig:Res_Ymodel}
+%\end{figure}
+%
+%
+%\subsection{Systematics}
+%For each slopes, several pdfs were used with floating fraction. The pdf for slope-x and slope-y that we used finally was found to be the most significant.
+%
+%\begin{itemize}
+%\item Validate fit with Toys
+%\item cross check: fit VdM ddata with full model $\rightarrow$  fits $f = 0$
+%\item systematic uncertainty - shape variation
+%\item try two gaussians with well separated mean (and sigma) instead of single gaussian --when floated coverges back to single gaussian(bigaussian)
+%\item single gaussian and bigaussian interchanged
+%\item fix widths to values of measurements at comparable luminosity
+%\item Let VdM core Gaussian parameters float
+%\end{itemize}
+
+
+\subsection{Toy Monte Carlo Simulation}
+
+A monte-carlo toy simulation was performed to understand the relationship between the accidental cut applied for 2016 data and the fraction of magenta curve from the likelihood fit. For a sample Fill, 100,000 tracks were generated with parameters from the combined model and the fraction of magenta was fixed to some value. A single gaussian was fitted to slope-$x$ and slope-$y$ separately, and the sigma and mean was extracted. Afterwards, the number of tracks falling outside the 5$\sigma$ cut on slope-$x$ and slope-$y$ was calculated multiple times for a given fraction3. The result is shown in figure \ref{fig:montecarlo} and it shows a linear relationship between the area under the magenta curve and the 5 sigma cut. The slope from the fit is 0.82, and the intercept is 7.63. Slope less than 1 implies that the area under magenta curve increases faster than the area outside the 5 sigma cut.
+%The slope of $0.82$ implies that the area under magenta curve grows faster than the area under the 5 sigma cut.
+
+
+\begin{figure}[htbp!]
+\centering
+  % trim = {<left> <lower> <right> <upper>}
+  \includegraphics[width=1.0\textwidth, trim = {1cm 2.5cm 1cm 1.5cm}, clip]%
+%  \includegraphics[width=1.0\textwidth]%
+    {figures/VdM/mc.png}% picture filename
+        \captionsetup{format=hang}
+%    \caption{Fit model reconstruction of tracks outside $5 \sigma$}
+\caption{Extrapolation of fit model to high accidental fractions vs the counting of the track in tails (outside $5 \sigma$) variable distributions.}
+    \label{fig:montecarlo}
+\end{figure}
+
+It should be noted that the 5 sigma cut applied for 2015 data was on both the slopes and residuals.  Maximum likelihood fit was done for the relevant independent variables, the slopes, and residuals are simply taken as a measure of track quality. A correction was then applied to the 5 sigma cut procedure that was applied for 2015 data. 
+%In effect, this correction is for the contribution to correction for 2015 data from bad slopes. Keeping the 5 sigma cut from residuals as a check on track quality, one can apply 18\% correction to 2015 accidental correction. Instead, if residuals were to be taken out of the equation, one has to look at the result from accidental correction using 2015 procedure and likelihood fit procedure. This was done for a representative fill and the slope was $1.23$, meaning that the area under magenta curve grew slower than the 5 sigma cut.
+
+
+
+
+
+%Correction on top of 5 sigma cuts
+%\section{Luminosity Correction}
+
+%\begin{table}[htp]
+%\begin{center}
+%\begin{tabular}{|r|c|}
+%    \hline
+%
+%Systematic source & Systematic uncertainty[\%] \\    \hline
+%
+%Absolute calibration from VdM scan & 2.6 \\     \hline
+%
+%\end{tabular}
+%\end{center}
+%    \captionsetup{format=hang}
+%\caption{Systematic uncertainties on the PLT luminosity measurement for the Year $25ns$ run.}
+%\label{default}
+%\end{table}%
+
+
+
+
+%\begin{table}
+%\begin{center}
+%    \begin{tabular}{| l | l | l | l |}
+%    \hline
+%    {\bf Interaction} & {\bf Strength} & {\bf Theory} & {\bf Mediator} \\ \hline
+%    Strong & 10 & Quantum Chromodynamics & Gluon \\ \hline
+%    Electromagnetic & $10^{-2}$ & Quantum Electrodynamics & Photon \\ \hline
+%    Weak & $10^{-3}$ & Flavordynamics &  W and Z Bosons\\ \hline
+%    Gravitation & $10^{-42}$ & Geometrodynamics & Graviton \\
+%    \hline
+%    \end{tabular}
+%     \caption{Rough order of the interaction strengths, the mediator and the theory, which describes
+%these interactions}
+%
+%\end{center}
+%\end{table}
