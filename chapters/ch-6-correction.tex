@@ -141,3 +141,117 @@ The yellow points(\textcolor{yellow}{algo4}) includes the requirement for adjace
 %%\newpage
 %Define what accidental correction means. Rename it something else?--background?
 
+
+
+\section{Accidental Correction}
+
+%As we dig into data to find some patterns that we can leverage for calculating the luminosity correction. The data that we save consists of all kinds of information--where did we get the hit, what time did we get the hit, at what plane, at what channel and so forth. We do know that when collision starts happening, less and less number of protons would be available for collision in succeeding cycle. We write a script to look at this data; how does the coincidence/track count vary with time?
+
+%Of course, we cannot make every collision identical. However, as we calculate luminosity per "lumi section", we would like to know how consistent we are. How much does the luminosity change over the course of a fill? For a given lumi section, how consistent is the luminosity over bunches? Is there bunch-bunch variation? How much uncertainty/error do we have to assign for per lumi section value due to this bunch-bunch variation?
+
+%Furthermore, from looking at the data, we see that there is fill to fill variation. How do we go about assigning uncertainty due to fill to fill variation?
+
+
+%The measured luminosity from the PLT needs to be corrected for due to pure noise or random background that contribute to the luminosity or due to systematic uncertainty in the measurement itself.
+
+There are pure noise or random track contributions to the Fast-OR counting in the PLT that need to be subtracted before translating the Fast-OR rate into luminosity as described in sec \ref{sec:lumiMeasurement}. Two different methods were used to identify such and count accidental tracks. 
+Section \ref{sec:5sigcut} describes the method used in 2015 where we define accidental tracks as those that fall outside a region in the distribution of track parameters. 
+The relative contribution from the sideband populations is used as relative correction to the luminosity value. 
+Section \ref{sec:mlfit} describes an alternative method first applied to 2016 data that uses a maximum likelihood fit to track parameters distribution. 
+
+%, where we establish a probability mass function for a parameter and look for deviation from the distribution to define whether any event is likely to be a "real" or fake track. As such, this method improves on the method employed in 2015.
+%Using this definition, we find a percentage correction that needs to be applied to the luminosity measurement. Section \ref{sec:mlfit} describes the method used for the 2016 data, where we establish a probability mass function for a parameter and look for deviation from the distribution to define whether any event is likely to be a "real" or fake track. As such, this method improves on the method employed in 2015.
+
+
+
+%We employed two different metrics to define what a "bad" event is for the 2015 and 2016 data. Section \ref{sec:5sigcut} describes the method used in 2015 where we define "accidental" tracks as those that fall outside certain cuts on track parameters. Using this definition, we find a percentage correction that needs to be applied to the luminosity measurement. Section \ref{sec:mlfit} describes the method used for the 2016 data, where we establish a probability mass function for a parameter and look for deviation from the distribution to define whether any event is likely to be a "real" or fake track. As such, this method improves on the method employed in 2015.
+
+% and is used as offline correction on top of the online correction from the .
+
+
+
+%Before discussing the correction methodology, 
+%Just like any other measurement, 
+
+%In order to know what "real" event is, we use track parameters taken from vdm scan during which beams are separated by large distance as a baseline. For the 2015 data, we look for ...
+
+
+%In this section, methods used to parametrize the tracks measured by the PLT at low luminosity regime, and the subsequent fit to high lumi regime will be discussed. 
+%
+% FIT AT VDM
+%
+%We use vdm scan to understand the shape of our beams and get a conversion factor for the luminosity measurement. As we scan the beams across each other, the overlap between beams changes and thus the number of proton-proton collision also changes. We then make a fit for the number of tracks as a function of beam separation to get the conversion factor at no separation between beams.
+
+%The proton-proton collision at nominal separation gives us the conversion factor which basically tells use the expected number of collision at 0mm beam separation. Unlike vdm scans where neighboring bunches are well separated, a set of continuous bunches are typically filled at nominal beam conditions. This introduces few complications with our conversion factor extracted from vdm analysis which needs to be corrected for. As we increase the number of filled bunches and as we increase the single bunch instantaneous luminosity (SBIL), we would like to understand how the number of collision, thus luminosity, changes.
+
+%Ideally, if per bunch luminosity was the same and only the number of filled bunch were to change, we can just multiply the number of bunches by conversion factor from vdm scan to get the new expected luminosity. This is not the case, however. Firstly, lot more bunches are filled and most bunches come into "trains"--a set of continuous filled bunches. Even though $\sim10^{11}$ protons are supposed to be confined within a $25 ns$, some protons manage to leak to bins ahead and behind the supposed bin. This creates "beam halos" which needs to be accounted for. Furthermore, luminosity per bunch i.e. SBIL also increases at regular fills. Both these new factors contribute differently to the luminosity that we measure via our telescopes.
+
+
+%pdf at vdm
+
+
+\subsection{Track Parameters} \label{sec:trackparams}
+
+PLT is positioned so that it accepts tracks that originated at the IP coming at particular angle. Background tracks are less likely to pass through all three planes of the telescope because of the way plane 0, 1, and 2 are positioned. Still, stray protons could collide with other stray protons to produce secondary particles that pass though all planes of a telescope which can be mistaken for genuine tracks. Sub-particles could also collide with instruments/molecules in the tube to make fake tracks. 
+
+The slope-y of all tracks is expected to be a distribution with mean close to the telescope's slope against IP and slope-x mean is expected to be close to 0. The goal is to look at the data and see how track parameters change with respect to the these parameters from the vdm scan where beams were far separated, and SBIL was close to 0.
+
+
+\subsubsection{Track parameters at VdM}
+Beam conditions for vdM are different than the regular nominal physics operation, with lower beam intensities and large separation between few dozens of filled bunches. As such, contribution from background is expected to be lower, esp since trigger is only set for colliding bunches. Figure \ref{fig:vdm54} shows the number of tracks as a function of beam separation during the "Y1 scan" in 0.5 $\sigma$ steps. Special trigger was employed for vdm scan to collect as many tracks as possible. 32 colliding bunches, and 5 con-colliding bunches were triggered for Fill 4954. 
+%Tracks from vdm scan at $0mm$ separation were investigated to find the PDF of slope x and slope y. 
+
+
+%we expect to see collision measurement coming from beam halos or other background factors which we would like to calculate and account for. 
+
+
+%For VdM Scan, special trigger was employed. Fig. \ref{fig:vdm54} shows the track rate for "Y1 scan". Beams are separated in 0.5 $\sigma$ steps.
+
+\begin{figure}[htbp!]
+\centering
+  \includegraphics[width=0.8\textwidth]%
+    {figures/VdM/VdMFill.png}% picture filename
+        \captionsetup{format=hang}
+    \caption{Number of tracks vs Beam separation, VdM Fill 4954(2016)}
+     \label{fig:vdm54}
+\end{figure}
+
+At higher luminosities when trigger is random and the per instantaneous luminosity is higher, however, non-luminosity contributions as explained in \ref{sec:corrIntro} are expected to increase. The goal is to find this extra contribution to luminosity measurement as a function of luminosity itself. Probability mass function of track parameters slope-x and slope-y was constructed using 50566 tracks reconstructed by applying the triple-hit condition for the $0$ mm separation of beams during VdM separation scan(Y1). Afterwards, deviations from the distributions at higher luminosity was investigated to find out the extra tracks that is seen beyond what is seen at vdm. 
+
+
+\subsection{5 Sigma Cut Procedure} \label{sec:5sigcut}
+For the 2015 run period, fill 4444 was chosen as a representative fill where PLT had the least operational issues. Uncertainty to luminosity was assigned by making quality cuts to track parameters. As shown in Figure \ref{fig:44Slope_Y}, a Gaussian was fitted to slopes and residuals, and  tracks falling outside the cut boundaries were investigated. 
+
+%any tracks outside 5 sigma from the mean is treated as a 'bad' track. Uncertainty from the change in cut is taken into account 
+
+%5 sigma cuts applied to slopes and residuals to get a linear relationship between the accidentals and the SBIL.
+
+
+\begin{figure}[htbp!]
+\centering
+  % trim = {<left> <lower> <right> <upper>}
+  \includegraphics[width=0.7\textwidth, trim = {0.2cm 0.2cm 0.2cm 0.25cm}, clip]%
+    {figures/slink/Fill4444_SlopeY_SigmaCuts.png}% picture filename
+        \captionsetup{format=hang}
+    \caption{Slope-y from Fill 4444 with sigma cut boundaries}
+    \label{fig:44Slope_Y}
+\end{figure}
+
+It was found that applying cuts outside $4.5$ to $5 \sigma$ and $5$ to $5.5 \sigma$ had little impact on the accidental correction. A combined cut of $5 \sigma$ was applied to both slopes and residuals to define a bad track. Table \ref{tbl:accCorr} shows the various cuts applied to slopes and residuals. Uncertainty of 1.5 \% is assigned to accidental definition resulting from change in cut criteria.
+
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+$\vert S_{x} \vert$ cut & $\vert S_{y} - S_{PLT} \vert $ cut & $R_{x}$ cut (cm) & $R_{y}$ cut (cm) & Measured Accidental Rate \\ \hline
+0.002 & 0.007 & 0.03 & 0.03 & 11 \% \\ \hline
+0.03 & 0.0105 & 0.03 & 0.03 & 8 \% \\ \hline
+0.03 & 0.0105 & 0.02 & 0.02 & 10\% \\ \hline
+\end{tabular}
+\end{center}
+    \captionsetup{format=hang}
+\caption{Variation in the measured accidental rate with different sets of cuts in track parameters.}
+\label{tbl:accCorr}
+\end{table}%
+
+
