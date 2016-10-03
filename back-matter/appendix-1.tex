@@ -1,6 +1,84 @@
-\chapter{Summary of Equations}
-\section{Cartesian}
-some equations here
+%\chapter{Summary of Equations}
+%\section{Cartesian}
+%some equations here
+%
+%\section{Cylindrical}
+%some equations also here
 
-\section{Cylindrical}
-some equations also here
+\chapter{Pixel Luminosity Telescope}
+
+\section{PLT Channel Map}
+ \begin{minipage}{\textwidth}
+  \begin{minipage}[b]{0.49\textwidth}
+    \centering
+    \begin{tabular}{| p{1.5 cm} | p{1.1cm} | p{1.3cm} | p{2cm} |}
+    \hline
+    Pixel \newline FED Ch&  mFEC & mFEC \newline Ch & Physical \\ \hline
+    01 & 8 & 1 & -N 5 \\ \hline
+    02 & 8 & 1 & -N 13 \\ \hline
+    04 & 8 & 1 & -N 21 \\ \hline
+    05 & 8 & 1 & -N 29 \\ \hline
+    07 & 8 & 2 & -F 5 \\ \hline
+    08 & 8 & 2 & -F 13 \\ \hline
+    10 & 8 & 2 & -F 21 \\ \hline
+    11 & 8 & 2 & -F 29 \\
+    \hline
+    \end{tabular}
+%     \caption{PLT Channel Map -Z}
+      \captionof{table}{PLT Channel Map -Z}
+      \label{table:mZ}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.49\textwidth}
+    \centering
+%    \begin{tabular}{| l | l | l | l |}
+    \begin{tabular}{| p{1.5 cm} | p{1.1cm} | p{1.3cm} | p{2cm}|}
+    \hline
+%    FED Ch & mFEC & mFEC Ch & Physical \\ \hline
+    Pixel \newline FED Ch &  mFEC & mFEC \newline Ch & Physical \\ \hline
+    13 & 7 & 1 & +N 5 \\ \hline
+    14 & 7 & 1 & +N 13 \\ \hline
+    16 & 7 & 1 & +N 21 \\ \hline
+    17 & 7 & 1 & +N 29 \\ \hline
+    19 & 7 & 2 & +F 5 \\ \hline
+    20 & 7 & 2 & +F 13 \\ \hline
+    22 & 7 & 2 & +F 21 \\ \hline
+    23 & 7 & 2 & +F 29 \\
+    \hline
+    \end{tabular}
+      \captionof{table}{PLT Channel Map +Z}
+      \label{table:pZ}
+    \end{minipage}
+  \end{minipage}
+  
+\section{ Zero - Counting Algorithm}
+
+\begin{verbatim}
+if (topic == plthistT::topicname()){
+plthistT* dataptr = inheader->getChannelID(); # pointer to data stream
+for every nibble::# 1 nibble = 4096 orbits
+    lumiNB = 0.0
+    for (int ch = 0;  ch < n_active_channels; ++ch) {
+        chLumi = 0.0
+        for (int bx = 0; bx < 3564; ++bx) {
+            nCoinc[bx] = dataptr->payload()[bx]
+            nZeroes[bx] = (4096 - nCoinc[bx]	)/(4096)
+            chLumi[bx] += -log(nZeroes[bx])* calib_factor #sigma_viz, accidental
+            bxzero[bx] = calib_factor * chLumi[bx]
+        }
+    lumiNB += sum(chLumi)/n_active_channels
+    }
+\end{verbatim}
+%\end{lstlisting}
+%    for every channel:: # ch from 0 to 14
+%        for every bx:: # bx from 0 to 3564
+%       for every bx::
+
+%	for (int ch = 1;  ch < 14; ++ch) {
+%	    for (int bx = 0; bx < 3564; ++bx) {
+%	    }
+%	}
+
+%P(0) = $e^{\lambda} = 1 - P(1+)
+%            ==>\lambda = -log(1 - P(1+))$
+
