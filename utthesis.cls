@@ -221,7 +221,8 @@
     	\newline
     	\hspace*{3.5in}\underline{\hspace*{2.5in}}
     	\newline
-    	\hspace*{3.5in}\@majorProfessor, Major Professor %
+%    	\hspace*{3.5in}\@majorProfessor, Major Professor %	
+    	\hspace*{3.4in}\@majorProfessor, Major Professor % changed from 3.5 to 3.4 @ Krishna
     	\begin{singlespace}
     		\noindent We have read this \@theDocumentType
     		\newline  and recommend its acceptance:
