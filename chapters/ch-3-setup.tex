@@ -6,7 +6,7 @@ This chapter describes the experimental facility used in the particle physics ex
 \section{Large Hadron Collider} \label{sec:LHC}
 
 %wo
-The Large Hadron Collider (LHC), first conceived in the 1980s, is the most powerful accelerator ever built with the aim of finding Higgs boson and search for particles and forces that interact between them not included in the SM. The collider is 27 kilometers in circumference and is placed 100 meters underground at the border between France of Switzerland near Geneva. 
+The Large Hadron Collider (LHC), first conceived in the 1980s, is the most powerful accelerator ever built with the aim of finding Higgs boson and search for particles and forces that interact between them not included in the SM. The collider is 27 kilometers in circumference and is placed 100 meters underground at the border between France of Switzerland near Geneva.
 
 %\begin{figure}[htbp!]
 %  % trim = {<left> <lower> <right> <upper>}
@@ -40,7 +40,7 @@ Proton beams are segmented into groups of protons called bunches. Beams are kept
 
 \subsection{Filling Scheme} \label{sec:fillScheme}
 
-Many protons are packed into each bunch to maximize the probability of a proton-proton collision for a given bunch crossing. Several filling patterns have been designed for various modes of operations of the LHC \cite{fill-schemes}. Typically, beams are arranged in the form of batches each with some continuous set of filled bunches. 
+Many protons are packed into each bunch to maximize the probability of a proton-proton collision for a given bunch crossing. Several filling patterns have been designed for various modes of operations of the LHC \cite{fill-schemes}. Typically, beams are arranged in the form of batches each with some continuous set of filled bunches.
 
 \begin{figure}[htbp!]
   \includegraphics[width=1.0\textwidth]%
@@ -66,7 +66,7 @@ The result described in this work is an analysis of the data taken with the Pixe
 % TODO:  add average pileup plot, describe what pileup is
 
 
-% change it with 2015/2016 pileup 
+% change it with 2015/2016 pileup
 
 \begin{figure}[htbp!]
 \centering
@@ -85,13 +85,7 @@ The result described in this work is an analysis of the data taken with the Pixe
 
 \section{CMS} \label{sec:CMS}
 
-%copied
-Compact Muon Solenoid (CMS) is one of two general purpose particle-physics detectors on the LHC. It is designed to investigate a wide range of particles and phenomenon produced in the proton-proton collisions. The primary motivation for building this detector was to search for the Higgs boson and probe the standard model at energy scales above 1 TeV. This could shed some light into extensions of SM such as extra dimensions, supersymmetry , dark matter, and also gravity models around TeV scale. 
-
-
-
-%%wo
-The CMS coordinate system, as shown in Fig ~\ref{fig:CMS:Coordinate}, is defined with the origin at the center of the detector. It is oriented such that the $z$-axis points along the LHC ring in counterclockwise direction, $x$-axis towards the center of the LHC ring, and the $y$-axis vertically upwards above ground. 
+The CMS coordinate system, as shown in Fig ~\ref{fig:CMS:Coordinate}, is defined with the origin at the center of the detector. It is oriented such that the $z$-axis points along the LHC ring in counterclockwise direction, $x$-axis towards the center of the LHC ring, and the $y$-axis vertically upwards above ground.
 
 % http://tex.stackexchange.com/questions/117140/easiest-way-to-draw-a-3d-coordinate-system-with-axis-labels-and-ticks-in-tikz
 \begin{figure}[htbp!]
@@ -115,10 +109,10 @@ $$
 p =   \begin{pmatrix}
     E\\
     \vec{p}\\
-  \end{pmatrix}  
+  \end{pmatrix}
 $$
-where $\vec{p} = (p_{x}, p_{y}, p_{z})$ in cartesian basis. The transverse momentum $p_{T}$ in $r - \phi $ plane is given by 
-$$ 
+where $\vec{p} = (p_{x}, p_{y}, p_{z})$ in cartesian basis. The transverse momentum $p_{T}$ in $r - \phi $ plane is given by
+$$
 p_{T} = \sqrt{p_{x}^{2} + p_{y}^{2}}
 $$
 
@@ -141,12 +135,12 @@ $$
 %	\draw[thick] (0,0) -- (1,1)--(2,2)--(4,4) node[anchor=north west] {$\theta = 45^{\circ},\eta =0.88 $};
 	\draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {$\theta = 0^{\circ}, \eta = 0$};
 	    % Draw a line at 30 degrees and of length 3
-	    
+
     \draw (0,0) -- (10:4.5cm) node[above]  {$\theta = 10^{\circ},\eta =2.44 $};
    \draw (0,0) -- (45:4.5cm) node[above]  {$\theta = 45^{\circ},\eta =0.88 $};
 %	\draw[thick] (0,0) -- (1,1)--(2,2)--(4,4) node[anchor=north west] {$\theta = 45^{\circ},\eta =0.88 $};
-    
-\end{tikzpicture}	
+
+\end{tikzpicture}
 	\caption{Relationship between polar angle and pseudorapidity.}
 \end{figure}
 
@@ -178,7 +172,7 @@ The central feature of the CMS apparatus is a superconducting solenoid of 6 {m} 
 
 
 
-Precise position measurement of charged particles coupled with strong magnetic field of the solenoid provides the parameters necessary for momentum resolution. The Electromagnetic Calorimeter and Hadronic Calorimeter provide the energy resolution. The Muon System and the silicon tracker measure the charged muon and inclusive particle positions respectively. The silicon tracker measures charged particles within the pseudorapidity range $\abs{\eta} < 2.5$. It consists of 1440 silicon pixel and 15,148 silicon strip detector modules and is located in the 3.8 {T} field of the superconducting solenoid. For nonisolated particles of $1 <  p_{T} < 10 GeV$ and $\abs{\eta} < 1.4$, the track resolutions are typically 1.5\% in $p_{T}$ and 25--90 (45--150)$\mu$m in the transverse (longitudinal) impact parameter \cite{TRK-11-001}. 
+Precise position measurement of charged particles coupled with strong magnetic field of the solenoid provides the parameters necessary for momentum resolution. The Electromagnetic Calorimeter and Hadronic Calorimeter provide the energy resolution. The Muon System and the silicon tracker measure the charged muon and inclusive particle positions respectively. The silicon tracker measures charged particles within the pseudorapidity range $\abs{\eta} < 2.5$. It consists of 1440 silicon pixel and 15,148 silicon strip detector modules and is located in the 3.8 {T} field of the superconducting solenoid. For nonisolated particles of $1 <  p_{T} < 10 GeV$ and $\abs{\eta} < 1.4$, the track resolutions are typically 1.5\% in $p_{T}$ and 25--90 (45--150)$\mu$m in the transverse (longitudinal) impact parameter \cite{TRK-11-001}.
 A more detailed description of the CMS detector, together with a definition of the coordinate system used and the relevant kinematic variables, can be found in Ref.~\cite{Chatrchyan:2008}.
 
 
@@ -295,7 +289,7 @@ CMS using silicon pixel sensors \cite{Kornmayer2015}. The instrument is position
 
 
 
-The PLT consists of a forward and backward module with each having 8 telescopes. Each telescope consists of 3 consecutive planes of silicon pixel detectors spaced apart by 3.75 cm. Each pixel sensor is segmented into of 80 rows and 52 columns of pixels, with each pixel 150 $\mu$ m wide and 100 $\mu$ m high for a total active area of about 8x8 mm$^{2}$. The middle plane is placed 0.102 cm higher than the first plane, and the third plane is placed 0.102 cm higher than the middle plane to maintain an average viewing angle of 0.27 degrees toward the interaction point. 
+The PLT consists of a forward and backward module with each having 8 telescopes. Each telescope consists of 3 consecutive planes of silicon pixel detectors spaced apart by 3.75 cm. Each pixel sensor is segmented into of 80 rows and 52 columns of pixels, with each pixel 150 $\mu$ m wide and 100 $\mu$ m high for a total active area of about 8x8 mm$^{2}$. The middle plane is placed 0.102 cm higher than the first plane, and the third plane is placed 0.102 cm higher than the middle plane to maintain an average viewing angle of 0.27 degrees toward the interaction point.
 
 %The telescopes are placed around the beampipe outside the CMS pixel endcaps, 8 on each side and 22.5 degrees apart.
 
@@ -326,8 +320,8 @@ The sensors are read out by a PSI46v2 readout chip (ROC), the same that is used 
 \subsubsection {Data Streams}
 
 %% change wording?
-The front-end readout electronics consist of a FEC (Front-End Controller) card, which issues 
-commands to the ROCs \cite{Allkofer:2007ek}, and three FED (Front-End Driver) cards \cite{Pernicka:1091743}. One FED is responsible for the readout of the pixel data from the ROCs , and is identical to the FEDs used by the pixel detector. The other two FEDs (one for each side of the detector) read out the Fast-OR data from the ROCs. 
+The front-end readout electronics consist of a FEC (Front-End Controller) card, which issues
+commands to the ROCs \cite{Allkofer:2007ek}, and three FED (Front-End Driver) cards \cite{Pernicka:1091743}. One FED is responsible for the readout of the pixel data from the ROCs , and is identical to the FEDs used by the pixel detector. The other two FEDs (one for each side of the detector) read out the Fast-OR data from the ROCs.
 
 The pixel data \cite{Barbero:467141} is read out via Slink and saved to disk on a dedicated computer hard drive, while the Fast-OR data is collected in a histogram with the FED. The histogram contains a bin for each bunch crossing (BX) and is incremented by 1 in case a telescope found at least 1 signal count for each sensors. The counts within the bins are added for every 4096 orbits (lumi nibble) corresponding to a time interval of about 13. ms. The integration occurs via a VME PC which is connected to the FED via a optical bridge.
 
@@ -344,8 +338,8 @@ The 52 columns in a sensor is segmented into a group of double columns, 0-26. Ea
 %{\bf Pixel Data} \\
 \noindent
 \textit{Pixel Data} \\
-Each pixel of a sensor is calibrated beforehand where some amount of charge collected can be translated to some number of hits. Once a sensor registers a charge signal above some threshold value, the pulse height and pixel address together with the timestamp information is saved to a buffer. Once the pixel detector receives a valid external signal trigger, the information is transferred to the FED via optical connections. 
-%, and a set of discrete ADC values translates to some number of hits. 
+Each pixel of a sensor is calibrated beforehand where some amount of charge collected can be translated to some number of hits. Once a sensor registers a charge signal above some threshold value, the pulse height and pixel address together with the timestamp information is saved to a buffer. Once the pixel detector receives a valid external signal trigger, the information is transferred to the FED via optical connections.
+%, and a set of discrete ADC values translates to some number of hits.
 
 
 \subsubsection {Trigger} \label{ssec:trigger}
@@ -353,7 +347,7 @@ Each pixel of a sensor is calibrated beforehand where some amount of charge coll
 
 
 %wo
-The rate of collision, proportional to LHC bunch crossings of 25 ns, translates to a frequency of 40 MHz. A trigger is used to reduce the amount the data to a more manageable rate. To this end, two different approaches were employed: a trigger generated by taking an OR of the fast-or coincidence signals from all of the channels was used in the early 2015 run to maximize the pixel data taken. It means that if any of the channels registered a triple coincidence for a BX, FED looked for hit signals for that BX. Starting late 2015, a purely random trigger at a rate of 2 kHz was used to avoid any systematic uncertainties in the trigger that could have been introduced by our choice of using fast-or signals for trigger signals. 
+The rate of collision, proportional to LHC bunch crossings of 25 ns, translates to a frequency of 40 MHz. A trigger is used to reduce the amount the data to a more manageable rate. To this end, two different approaches were employed: a trigger generated by taking an OR of the fast-or coincidence signals from all of the channels was used in the early 2015 run to maximize the pixel data taken. It means that if any of the channels registered a triple coincidence for a BX, FED looked for hit signals for that BX. Starting late 2015, a purely random trigger at a rate of 2 kHz was used to avoid any systematic uncertainties in the trigger that could have been introduced by our choice of using fast-or signals for trigger signals.
 
 
 %Cycling trigger was used in 2016 where trigger gets shifted by 1579 BX every 3 orbits to achieve  sufficiently random trigger as seen in Fig. \ref{fig:trigger}
@@ -369,36 +363,6 @@ The rate of collision, proportional to LHC bunch crossings of 25 ns, translates 
 \end{figure}
 
 TTCci hardware supports internal random trigger or a fixed sequence of intervals \cite{TTCI} . In order to achieve a sufficiently random trigger within 3564 bins and achieve a manageable rate of ~3 kHz, trigger is made to advance by 1585 bunches every 3 orbits (out of 4096 per nibble). Fig. \ref{fig:trigger} shows the BXes triggered via random trigger setup for the Fill 4444 from September 30, 2015. One downside of having a random trigger approach is that pixel data gets saved at high rate even when there is no beam.
-
-%-# TTCci configuration file for taking data. Can be set up to
-%-# use either the fast-or trigger or a random trigger. For the
-%-# fast-or trigger, set TRIGGER_SOURCE to FRONTPANEL0 and
-%-# comment out the TRIGGER_FREQUENCY_HZ line. For the random
-%-# trigger, set TRIGGER_SOURCE to INTERNAL and uncomment the
-%-# TRIGGER_FREQUENCY_HZ ... RANDOM line.
-%+# TTCci configuration file for taking data. This is set up
-%+# to use a cycling trigger which should advance by 1585 BX
-%+# each time and triggers every 3+(1579/3564) orbits (~3.26 kHz).
-%+# Why 1579? Because we want a total cycle (which naturally
-%+# takes 3564 orbits) to take a multiple of 4096 orbits (1
-%+# nibble). This would suggest 1596 but we actually want a little
-%+# bit less (a) so we have a number relatively prime to 3564
-%+# and also (b) because there is a bit of time when the trigger
-%+# is paused, so we want to account for that in our cycle.
-
-% orbit frequency--11.2455 kHz
-
-
-%One thing that might be worth considering is that this means we'll be
-%taking a lot of Slink data even when there is no beam (of course, since
-%there are no actual collisions, the events will be empty). It might be
-%useful thus to disable triggers during no beam periods (although I'm not
-%sure when we would want to reenable them -- injection probe beam or
-%injection physics beam, maybe)?
-
-
-%Slink data for high luminosity runs are generally regulated by the random trigger as shown in Fig. \ref{fig:trigger}. Sufficiently random within 3564 bunches. TTCci to produce random trigger 1-3 KHz. Useful to get data from unfilled BXes too so we can monitor the noise. For special runs like VdM, special trigger is used to maximize the data taken. Fig. \ref{fig:trigger} shows a sample trigger rate for Fill 4444. VdM Fill 4954 had only 37 bunches triggered.
-
 
 
 
@@ -424,8 +388,8 @@ During early commissioning operations, Channels 22 and 23 in Fig. \ref{fig:PLTmo
 
 
 \subsection{Zero Counting Algorithm} \label{sec:zero-count}
-%The PLT is located at rapidity of $\approx 4$ and is expected to receive $\approx 300-400$ coincidences per bunch crossing, which translates to about 0.1 coincidences per orbit. 
-The average occupancy of the PLT at the LHC design luminosity is about 0.1 per BX. For a given telescope, the number of hits that it receives in a bunch crossing can be considered a simple counting experiment. Figure \ref{fig:pBXfor} shows the mean number of coincidence count per telescope for a sample data. 
+%The PLT is located at rapidity of $\approx 4$ and is expected to receive $\approx 300-400$ coincidences per bunch crossing, which translates to about 0.1 coincidences per orbit.
+The average occupancy of the PLT at the LHC design luminosity is about 0.1 per BX. For a given telescope, the number of hits that it receives in a bunch crossing can be considered a simple counting experiment. Figure \ref{fig:pBXfor} shows the mean number of coincidence count per telescope for a sample data.
 
 The number of hits is proportional to the length of the interval, which is 25ns in our case. The probability of occurrence of two or more hits is very small and the number of events for one bin is independent of what happens in another bin. As such, the triple-coincidence count can be treated as a problem in Poission statistics as described in sec \ref{sec:lumiMeasurement}.
 %the average occupancy of the PLT at the LHC design luminosity is about 0.1 per BX
@@ -462,7 +426,7 @@ The number of hits is proportional to the length of the interval, which is 25ns 
 %\end{equation}
 %
 %\noindent
-%A telescope can technically record upto 4096 coincidences, 1 for each orbit. However, the average number of coincidences that PLT measures is about 300 as shown in Fig. \ref{fig:pBXfor} i.e. there is less than 1 in 10 chance for a telescope to register a triple coincidence for a filled bunch in an orbit. From equation \ref{eq:lambdaZ} we see that for higher value of P(1+) (which means larger fraction of orbits with coincidences), value of $\lambda$ becomes larger because the argument of log gets smaller. 
+%A telescope can technically record upto 4096 coincidences, 1 for each orbit. However, the average number of coincidences that PLT measures is about 300 as shown in Fig. \ref{fig:pBXfor} i.e. there is less than 1 in 10 chance for a telescope to register a triple coincidence for a filled bunch in an orbit. From equation \ref{eq:lambdaZ} we see that for higher value of P(1+) (which means larger fraction of orbits with coincidences), value of $\lambda$ becomes larger because the argument of log gets smaller.
 %
 %
 %\noindent
@@ -476,7 +440,7 @@ The number of hits is proportional to the length of the interval, which is 25ns 
 %%wo
 The Van der Meer (VdM) scans procedure \cite{vanderMeer:296752} is used to measure the conversion factor between the number of tracks measured by the PLT and the delivered luminosity as described in \ref{sec:lumiCalibration}. The LHC performed the VdM procedure for CMS on 24th August 2015 (LHC Fill 4266), and on 27th May 2016 (LHC Fill 4954)
 
-%Analysis of VdM tracks is done by assuming that the LHC beam is approximately Gaussian. The two colliding beams are separated by upto 6 $\sigma$ in 0.5 $\sigma$ steps. This procedure is repeated along both the horizontal (crossing scan-X) and vertical (separation scan-Y) axes in the CMS coordinate system. The LHC performed the VdM procedure for CMS on 24th August 2015 (LHC Fill 4266), and on 27th May 2016 (LHC Fill 4954). This procedure is repeated three times each along the X and Y axes during which both beams are made to move in tandem across one another. Two additional pairs of beam imaging scans were also performed keeping each beam stationary while the other beam scans across it. 
+%Analysis of VdM tracks is done by assuming that the LHC beam is approximately Gaussian. The two colliding beams are separated by upto 6 $\sigma$ in 0.5 $\sigma$ steps. This procedure is repeated along both the horizontal (crossing scan-X) and vertical (separation scan-Y) axes in the CMS coordinate system. The LHC performed the VdM procedure for CMS on 24th August 2015 (LHC Fill 4266), and on 27th May 2016 (LHC Fill 4954). This procedure is repeated three times each along the X and Y axes during which both beams are made to move in tandem across one another. Two additional pairs of beam imaging scans were also performed keeping each beam stationary while the other beam scans across it.
 %The beam imaging scans also cover the same separation range in both X and Y direction as the standard pairs.
 %%wo
 
@@ -573,9 +537,13 @@ $$\sigma_{eff} = \cfrac{a_{1}\sigma_{1} + a_{2}\sigma_{2}}{a_{1} + a_{2}}.$$
 \begin{center}
 \includegraphics[width=0.49\textwidth]{figures/aan-plots/XFitScan1.png}
 \includegraphics[width=0.49\textwidth]{figures/aan-plots/YFitScan1.png}
-\caption{Double Gaussian fit to PLT track rate as a function of beam separation, for bunch 1011 during the first separation/crossing VdM scan in X and Y.
-\label{fig:Scan1Fits}}
+        \captionsetup{format=hang}
+%\caption{Double Gaussian fit to PLT track rate as a function of beam separation, for bunch 1011 during the first separation/crossing VdM scan in X and Y.}
+\caption{Double Gaussian fit to PLT track rate as a function of beam separation, for bunch 1011 during the first separation VdM scan in X and Y.}
+\label{fig:Scan1Fits}
 \end{center}
 \end{figure}
 
-The final conversion factors extracted vis the vdm scan for 2015 and 2016 are blah1 and blah2 respectively with a relative uncertainty of ...\%.
+The final conversion factors extracted vis the vdm scan for 2016 is 328 inverse microbarns/second with an uncertainty of ~5\%. %respectively with a relative uncertainty of ...\%.
+
+%The number for 2016 is presently 328 inverse microbarns/second with an uncertainty of ~5%.  This uncertainty is inflated due to an extrapolation from 2015 conditions.
