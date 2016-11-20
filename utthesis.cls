@@ -136,13 +136,14 @@
 	pdfpagelayout=SinglePage,
     bookmarksopen=False,
 	%pdfview=FitV,
-	pdfborder=0 0 0, 		% make all links invisible, so the pdf looks good when printed	
+	pdfborder=0 0 0, 		% make all links invisible, so the pdf looks good when printed
     pdffitwindow=true,      % window fit to page when opened
     %pdfstartview={FitV},   % fits the width of the page to the window
     pdfcreator={\@author},  % creator of the document
     pdfnewwindow=true,      % links in new window
     colorlinks=true,        % false: boxed links; true: colored links
-    linkcolor=blue,         % color of internal links
+%    linkcolor=blue,         % color of internal links
+    linkcolor=black,         % color of internal links
     citecolor=magenta,      % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           % color of external links
@@ -181,9 +182,9 @@
         \vfill
 		\Large \rm
         \ifnum\@documentID=\thesisID {
-            A Thesis Presented for
+            A Thesis Presented for the
 
-            The \@degree
+            \@degree
         } \else {
             A Dissertation
 
@@ -191,13 +192,13 @@
 
             \@degree
         } \fi
-		
+
 		Degree
-		
+
 		\@university
-		
+
 		\vspace*{1.0in}%
-		
+
 		\@author %
 		\\%
 		\@graduationMonth\ \@copyrightYear
@@ -221,7 +222,7 @@
     	\newline
     	\hspace*{3.5in}\underline{\hspace*{2.5in}}
     	\newline
-%    	\hspace*{3.5in}\@majorProfessor, Major Professor %	
+%    	\hspace*{3.5in}\@majorProfessor, Major Professor %
     	\hspace*{3.4in}\@majorProfessor, Major Professor % changed from 3.5 to 3.4 @ Krishna
     	\begin{singlespace}
     		\noindent We have read this \@theDocumentType
@@ -266,7 +267,7 @@
         \vspace*{.1in} \noindent
     	\begin{singlespace}
         	\noindent We have read this \@theDocumentType
-        	\newline  and recommend its acceptance:        	
+        	\newline  and recommend its acceptance:
             \addCommitteeMemberETD{\@committeeMemberA}
             \addCommitteeMemberETD{\@committeeMemberB}
             \ifnum\@numberOfCommitteeMembers>2
@@ -285,7 +286,7 @@
                 \noindent \hspace*{2.65in}\@viceProvost
                 \\[-8pt]
             	\noindent \hspace*{2.65in}\underline{\hspace*{2.5in}}
-                \newline		
+                \newline
                 \newline
         		\hspace*{2.65in}Vice Provost and Dean of the Graduate School
                 \begin{center}
@@ -315,6 +316,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\makeAppendixPage}{
     \newpage
+    \addToTOC{Appendix} % add bibliography to table of contents    
     \vspace*{2.0in}
     \begin{center}\Huge \bf{Appendix} \end{center}
     \newpage
@@ -356,4 +358,4 @@
     \end{center}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\endinput 
+\endinput
