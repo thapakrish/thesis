@@ -10,6 +10,7 @@
 \section{PLT Channel Map}
  \begin{minipage}{\textwidth}
   \begin{minipage}[b]{0.49\textwidth}
+        \captionof{table}{PLT Channel Map -Z}
     \centering
     \begin{tabular}{| p{1.5 cm} | p{1.1cm} | p{1.3cm} | p{2cm} |}
     \hline
@@ -25,11 +26,11 @@
     \hline
     \end{tabular}
 %     \caption{PLT Channel Map -Z}
-      \captionof{table}{PLT Channel Map -Z}
       \label{table:mZ}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.49\textwidth}
+        \captionof{table}{PLT Channel Map +Z}
     \centering
 %    \begin{tabular}{| l | l | l | l |}
     \begin{tabular}{| p{1.5 cm} | p{1.1cm} | p{1.3cm} | p{2cm}|}
@@ -46,12 +47,11 @@
     23 & 7 & 2 & +F 29 \\
     \hline
     \end{tabular}
-      \captionof{table}{PLT Channel Map +Z}
       \label{table:pZ}
     \end{minipage}
   \end{minipage}
   
-\section{ Zero - Counting Algorithm}
+\section{Zero - Counting Algorithm}
 
 \begin{verbatim}
 if (topic == plthistT::topicname()){
@@ -63,7 +63,7 @@ for every nibble::# 1 nibble = 4096 orbits
         for (int bx = 0; bx < 3564; ++bx) {
             nCoinc[bx] = dataptr->payload()[bx]
             nZeroes[bx] = (4096 - nCoinc[bx]	)/(4096)
-            chLumi[bx] += -log(nZeroes[bx])* calib_factor #sigma_viz, accidental
+            chLumi[bx] += -log(nZeroes[bx])* calib_factor
             bxzero[bx] = calib_factor * chLumi[bx]
         }
     lumiNB += sum(chLumi)/n_active_channels
