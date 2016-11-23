@@ -38,7 +38,7 @@
 % THIS TEMPLATE ACCOMMODATES UP TO 5 COMMITTEE MEMBERS - ENTER ONLY THE NAMES OF THE MEMBERS ON YOUR COMMITTEE
 \numberOfCommitteeMembers{3} % enter the number of committee members
 \committeeMemberA {Dr. Stefan Spanier}	% name of first committee member
-\committeeMemberB {Dr. Marinne Breining}	% name of second committee member
+\committeeMemberB {Dr. Marianne Breining}	% name of second committee member
 \committeeMemberC {Dr. Thomas Handler}	% ... you get the trend!
 \committeeMemberD {Committee Member 4}	% if your committee has less than 4 members, you do not need to edit the
 \committeeMemberE {Committee Member 5}  % rest of committee names
@@ -82,6 +82,9 @@
 
 % convert ps to pdf
 %\usepackage{auto-pst-pdf}
+
+% to rotate picture
+\usepackage{rotating}
 
 % to indent caption
 % http://tex.stackexchange.com/questions/149752/indent-figure-multi-line-caption
@@ -132,6 +135,9 @@
 %\renewcommand*{\rmdefault}{\sfdefault}
 
 
+\renewcommand{\contentsname}{Table of Contents}
+\usepackage[titletoc]{appendix}
+
 %\usepackage{devanagari}
 
 %%% PACKAGES THAT ARE PRELOADED WITH THE CLASS ARE: amsmath,amsthm,amssymb,setspace,geometry,hyperref,and color
@@ -139,8 +145,8 @@
 \begin{document}
     \pagenumbering{alph} % this is needed to clear certain issues with the hyperref package
     %
-    \makeApprovalPage % make the approval page - this is the page that needs to be signed & returned to the thesis/dissertation consultant
-    \makeETDApprovalPage % make the Electronic Thesis & Dissertation page - this page is kept with the electronic copy
+%    \makeApprovalPage % make the approval page - this is the page that needs to be signed & returned to the thesis/dissertation consultant
+%    \makeETDApprovalPage % make the Electronic Thesis & Dissertation page - this page is kept with the electronic copy
     %
     \addToPDFBookmarks{0}{Front Matter}{rootNode} % create a root node named "Front Matter" in the pdf bookmarks
     \addToPDFBookmarks{1}{Title}{a} % add a pdf bookmark to the title page
@@ -166,15 +172,15 @@
     \addToPDFBookmarks{0}{Table of Contents}{f}
     \tableofcontents % generate a table of contents
     %
-    \addToTOC{List of Tables} % this will add the list of tables to the Table of Contents (TOC)
+%    \addToTOC{List of Tables} % this will add the list of tables to the Table of Contents (TOC)
     \listoftables % generate a list of tables
     %
-    \addToTOC{List of Figures} % this will add the list of figures to the Table of Contents (TOC)
+%    \addToTOC{List of Figures} % this will add the list of figures to the Table of Contents (TOC)
     \listoffigures % generate a list of figures
     %
-    \makenomenclature % OPTIONAL
-    \addToPDFBookmarks{0}{Nomenclature}{g} % OPTIONAL
-    \printnomenclature[1.25in] % OPTIONAL
+%    \makenomenclature % OPTIONAL
+%    \addToPDFBookmarks{0}{Nomenclature}{g} % OPTIONAL
+%    \printnomenclature[1.25in] % OPTIONAL
     %
     \newpage
     \pagenumbering{arabic}
@@ -199,16 +205,21 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % BIBLIOGRAPHY
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\bibname}{}
     \makeBibliographyPage % make the bibliography title page - can be edited in ut-thesis-template.tex
-    \bibliographystyle{apalike} % bibliography style - recommend using apalike-doi as it hyperlinks DOIs
+    \bibliographystyle{apalike}% bibliography style - recommend using apalike-doi as it hyperlinks DOIs
     \bibliography{references/references-dissertation} % references.bib included in the references directory
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % APPENDIX - OPTIONAL - COMMENT IF NOT NEEDED
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\appendixname}{} 
     \makeAppendixPage   % make the appendix title page - can be edited in ut-thesis-template.tex
-    \appendix
+   \newpage
+    \appendix 
+    \begin{appendices}
     \include{back-matter/appendix-1} %uncomment for appendix
-    \include{back-matter/appendix-2} %uncomment for appendix
+%    \include{back-matter/appendix-2} %uncomment for appendix
+\end{appendices}
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % A VITA IS REQUIRED
