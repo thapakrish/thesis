@@ -3,22 +3,22 @@
 %\newpage
 \section{Introduction}
 
-%For the early parts of 2015, I wrote codes to read data off data streams from the machine close to the detector. This was leveraged to make a live display of data coming from different detector elements/channels of the detector. This code is deployed to the p5 station at CERN, the closest point to detector and data warehouse where data gets saved for record, lets users know the operational condition of the machine.
+%For the early parts of 2015, I wrote codes to read data off data streams from the machine close to the detector. This was leveraged to make a live display of data coming from different detector elements/channels of the detector. This code is deployed to the p5 station at CERN, the closest point to a detector and data warehouse where data gets saved for the record, lets users know the operational condition of the machine.
 
-PLT is the youngest detector for the BRIL system dedicated to provide online luminosity. Having been installed in 2015, a lot of infrastructure had to be built for the operation of PLT from ground up. This chapter explains some of the operational work done for the PLT as part of the thesis. Section \ref{sec:JavaDisplay} gives an overview of reconstructed pixel hits seen from the CMS coordinate system. Section \ref{sec:Alarm} discusses some of the operational issues PLT encounters and the work done to detect and correct those problems. Section \ref{sec:elSearch} and  section \ref{sec:NormTags} give an overview of data handling and data housing for record keeping purpose.
+PLT is the youngest detector for the BRIL system dedicated to providing online luminosity. Having been installed in 2015, a lot of infrastructures had to be built for the operation of PLT from ground up. This chapter explains some of the operational work done for the PLT as part of the thesis. Section \ref{sec:JavaDisplay} gives an overview of reconstructed pixel hits seen from the CMS coordinate system. Section \ref{sec:Alarm} discusses some of the operational issues PLT encounters and the work was done to detect and correct those problems. Section \ref{sec:elSearch} and  section \ref{sec:NormTags} give an overview of data handling and data housing for record keeping purpose.
 
 
 \section{Machine condition monitoring}
 
 %Hit_Display_0505.091006_CH1-12.png
 \subsection{Hit Display}\label{sec:HitDisplay}
-Early data from Slink was analyzed offline to look at the coordinate positions of individual hits that are recorded by each planes. Fig. \ref{fig:HitDisplay} shows the hits on each planes of telescope for -Z side from Fill 3679 which was taken on June 5, 2015. It serves as a sanity check for telescope alignment and it is also reassuring to see each pixel hits visually in a global coordinate system.
+Early data from Slink was analyzed offline to look at the coordinate positions of individual hits that are recorded by each plane. Fig. \ref{fig:HitDisplay} shows the hits on each plane of a telescope for -Z side from Fill 3679 which was taken on June 5, 2015. It serves as a sanity check for telescope alignment and it is also reassuring to see each pixel hits visually in a global coordinate system.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]%
     {figures/display/EventDisplay_prelim.png}% picture filename
-    \caption{Hit Display from 05-05-2015, -Z side (Ch1- Ch12)}
+    \caption{Hit Display from 05-05-2015, -Z side (Ch1- Ch12).}
     \label{fig:HitDisplay}
 \end{figure}
 
@@ -36,48 +36,48 @@ BRIL group has a station in p5 where a shifter looks at data being taken by mult
     \label{fig:coincidences}
 \end{figure}
 
-A script was written to read data off data streams from the machine close to the detector. This was then used to make a live display of data coming from different detector channels. This code is deployed to the p5 station at CERN, the closest point to detector and data warehouse where data gets saved downstream for record. This display lets users know the operational condition of the machine in a more interactive and user friendly manner. Fig. \ref{fig:coincidences} shows the plot of live coincidence counts for each telescope for the PLT.
+A script was written to read data off data streams from the machine close to the detector. This was then used to make a live display of data coming from different detector channels. This code is deployed to the p5 station at CERN, the closest point to a detector and data warehouse where data gets saved downstream for the record. This display lets users know the operational condition of the machine in a more interactive and user-friendly manner. Fig. \ref{fig:coincidences} shows the plot of live coincidence counts for each telescope for the PLT.
 
 
 
 
 \section{Alarm Mechanism} \label{sec:Alarm}
-Major part of operation is to know exactly what is going on with the detector. Some channel could be behaving erratically, channel(s) have dropped out, quadrant isn't sending data, baseline drift, or something else could be happening. Since PLT is a dedicated online luminometer, it is important to know the status, and report any operational issues to the available experts as soon as events happened.
+A major part of the operation is to know exactly what is going on with the detector. Some channel could be behaving erratically, channel(s) have dropped out, a quadrant isn't sending data, baseline drift or something else could be happening. Since PLT is a dedicated online luminometer, it is important to know the status, and report any operational issues to the available experts as soon as events happened.
 
-It is not always feasible to have a shifter at p5 for all the data taking process. Automatic alarm mechanism was deployed using PLTAnalyzer script, which takes running average of the coincidence counts for each channel and reports errors for prompt diagnostics of detector components. Following is a tentative rundown of algorithm used for sending alarms:
+It is not always feasible to have a shifter at p5 for all the data taking process. Automatic alarm mechanism was deployed using PLTAnalyzer script, which takes a running average of the coincidence counts for each channel and reports errors for prompt diagnostics of detector components. Following is a tentative rundown of algorithm used for sending alarms:
 
 
 %A running average per channel over some lumi sections. 
 
 \begin{itemize}
-	\item Check if coincidence count for channels is greater than some threshold value. This eliminates spurious alarms during non-stable beams.
-	\item Check if TCDS data makes sense. Often this causes large coincidence counts to lump into 1 particular nibble that causes spikes in lumi.
-	\item Save the coincidence count for each channel from last N lumi sections to a 2d vector
-	\item Get the average of N lumi sections, compare it to sum from this lumi section
-	\item Get the \% deviation from average for each channel
-	\item Find the deviation from the average deviation for each channel. This eliminates alarm to when all channels rise up or fall down similarly.
-	\item Assign a threshold for a channel to go up or down in each lumi section. Send alarm if non-zero number of channels deviate from average deviation.
+    \item Check if coincidence count for channels is greater than some threshold value. This eliminates spurious alarms during non-stable beams.
+    \item Check if TCDS data makes sense. Often this causes large coincidence counts to lump into 1 particular nibble that causes spikes in lumi.
+    \item Save the coincidence count for each channel from last N lumi sections to a 2d vector
+    \item Get the average of N lumi sections, compare it to sum from this lumi section
+    \item Get the \% deviation from average for each channel
+    \item Find the deviation from the average deviation for each channel. This eliminates alarm to when all channels rise up or fall down similarly.
+    \item Assign a threshold for a channel to go up or down in each lumi section. Send alarm if a non-zero number of channels deviate from average deviation.
 \end{itemize}
-		
-If an alarm criteria is met, per channel coincidence count from the current lumi section, average from last n lumi sections for each channel, and other statistics is saved to a log file for future reference. An email is  also sent to users if alarm conditions are met so that operational issues are dealt with promptly.
-		
+        
+If an alarm criterion is met, per channel coincidence count from the current lumi section, average from last n lumi sections for each channel, and other statistics is saved to a log file for future reference. An email is  also sent to users if alarm conditions are met so that operational issues are dealt with promptly.
+        
 \section{Elastic Search - Data warehousing} \label{sec:elSearch}
 %% refrence Mark's thesis for system details?
 
 %Elastic Search/Infospace
-Data saved to Slink or Histogram files from Fast-or take huge amount of time to analyze just because of the sheer size of dataset itself. It is desirable to have a system where one can save some representative data at lower rate that can be queried/searched to look for patterns in data. One might be interested in knowing coincidence count as a function of Fill, lumi section, day, or any other relevant parameter.
+Data saved to Slink or Histogram files from fast-or take huge amount of time to analyze just because of the sheer size of the dataset itself. It is desirable to have a system where one can save some representative data at a lower rate that can be queried/searched to look for patterns in data. One might be interested in knowing coincidence count as a function of Fill, lumi section, day, or any other relevant parameter.
 
 
-Data is sent to elastic search database at a less-granular level. The data gets saved to the database for some time which can be accessed for diagnostic purpose. See Appendix \ref{code:elSearch} for relevant part of the code within PLTAnalyzer.cc.
+Data is sent to elastic search database at a less granular level. The data gets saved to the database for some time which can be accessed for diagnostic purpose. See Appendix \ref{code:elSearch} for relevant part of the code within PLTAnalyzer.cc.
 
 
 \section{Data Validation} \label{sec:NormTags}
 %Normtags
 %Comparison to other luminometers
-BRIL group also has other luminometers that make luminosity measurement by other methods. After getting the data, an expert generally inspects the data and assigns good/bad tags to it. PLT, for example, could have had a channel dropout for a fill, run number, and lumi section rendering the data taken useless. It is not feasible for users to make plots to all data and comb through each lumi section for any peculiarities. Code was written to make things easier for users to identify and flag bad data regions. Make ratio plots to find agreement or disagreement with other luminometers. 
+BRIL group also has other luminometers that make luminosity measurement by other methods. After getting the data, an expert generally inspects the data and assigns good/bad tags to it. PLT, for example, could have had a channel drop out for a fill, run number, and lumi section rendering the data taken useless. It is not feasible for users to make plots to all data and comb through each lumi section for any peculiarities. A code was written to make things easier for users to identify and flag bad data regions. Make ratio plots to find agreement or disagreement with other luminometers. 
 
 \noindent
-See Appendix \ref{code:normtag} for relevant part of the code within PLTAnalyzer.cc.
+%See Appendix \ref{code:normtag} for relevant part of the code within PLTAnalyzer.cc.
 
 \begin{figure}
   \centering
@@ -85,6 +85,6 @@ See Appendix \ref{code:normtag} for relevant part of the code within PLTAnalyzer
 %  \includegraphics[width=0.8\textwidth, trim = {2.5cm 7.2cm 2.5cm 5cm}, clip]%
   \includegraphics[width=0.75\textwidth, trim = {1cm 1cm 1cm 0.5cm}, clip]%
     {figures/misc/NormTag.png}% picture filename
-    \caption{Ratio plots for NormTag validation}
+    \caption{Ratio plots for NormTag validation.}
     \label{fig:NormTag}
 \end{figure}

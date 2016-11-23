@@ -17,16 +17,16 @@ PLT reports the online luminosity value by using the fast-or dataset. Slink data
 
 %Since PLT is an online luminometer, the luminosity value reported by PLT is from the fast-or data, which uses the zero-counting algorithm. 
 
-PLT data is saved in granular level via the slink streams for offline analysis. Each hit is saved according to it's channel number, bunch number, plane number and the pixel within the plane. In the plane's coordinate system, each pixel can be identified by its row and column number where each row is $150 \mu m$ and each column is $100 \mu m$. This is akin to just the first quarter of cartesian coordinate system with (0, 0) representing plane's leftmost pixel from the lowest row. 
+PLT data is saved in granular level via the slink streams for offline analysis. Each hit is saved according to its channel number, bunch number, plane number and the pixel within the plane. In the plane's coordinate system, each pixel can be identified by its row and column number where each row is $150 \mu m$ and each column is $100 \mu m$. This is akin to just the first quarter of cartesian coordinate system with (0, 0) representing plane's leftmost pixel from the lowest row. 
 
 % For this data to be useful, however, knowledge of the correct position of each telescope is equally important. 
 
 Each telescope's position with respect to the CMS coordinate system is known beforehand. In the telescope coordinate system, midpoints of planes 0, 1, 2, are positioned at (0, 0, 0), (0, 0.102, 3.77), and (0, 0.204, 7.54) respectively. Hit positions from each plane are then translated to the CMS coordinate system with (0, 0, 0) at the interaction point to look for patterns in measurement data.
 
 
-A set of hits that pass though all three planes and assumed to be the trace of a moving charged particle are referred to as tracks. This is analogous the the triple coincidence criteria set for fast-or but with few differences. Unlike fast-or, which uses the zero-counting algorithm, tracking algorithm is designed to make multiple tracks from the set of hits and clusters of hits in plane 0, 1, and 2. 
+A set of hits that pass through all three planes and assumed to be the trace of a moving charged particle are referred to as tracks. This is analogous the triple coincidence criteria set for fast-or but with few differences. Unlike fast-or, which uses the zero-counting algorithm, tracking algorithm is designed to make multiple tracks from the set of hits and clusters of hits in plane 0, 1, and 2. 
  
-For alignment purpose, only the "cleanest" set of tracks are considered, namely the tracks with only 1 hit in plane 0, 1, and 2 each. As a reference, the "ideal" alignment file is used and the tracking algorithm is applied to sets of hits passing the triple-hit criteria. Under ideal assumption, a good track would hit same pixels (rows, columns) in each plane shifted by the predefined alignment of the PLT planes. Tracking algorithm makes a best fit to the three hits in each plane of a telescope, and the residuals are calculated for each such tracks. This step is repeated for large number of tracks and the deviation from the ideal alignment is calculated to generate a final translated alignment file for each data taking period.
+For alignment purpose, only the "cleanest" set of tracks are considered, namely the tracks with only 1 hit in plane 0, 1, and 2 each. As a reference, the "ideal" alignment file is used and the tracking algorithm is applied to sets of hits passing the triple-hit criteria. Under the ideal assumption, a good track would hit same pixels (rows, columns) in each plane shifted by the predefined alignment of the PLT planes. Tracking algorithm makes the best fit to the three hits in each plane of a telescope, and the residuals are calculated for each such tracks. This step is repeated for a large number of tracks and the deviation from the ideal alignment is calculated to generate a final translated alignment file for each data taking period.
 
 %to find the alignment for each telescope during each data taking period. 
 %...Eventually, the correction to be applied to the ideal alignment is calculated using the slopes and residuals via the "rotational residuals."...
@@ -51,12 +51,12 @@ Fast-or data stream saves coincidence count for each channel in a form of histog
   \includegraphics[width=1.0\textwidth]%
     {figures/FastOR/ncoinc44Log.png}% picture filename
         \captionsetup{format=hang}
-    \caption{3-fold coincidence count for all channels as a function of bunch crossing, Fill 4444 (2015) }
+    \caption{3-fold coincidence count for all channels as a function of bunch crossing, Fill 4444 (2015). }
       \label{fig:pBXfor}
 \end{figure}
 
 
-For every bunch crossing, only ... are likely to collide as seen in Figure \ref{fig:pileup}. Out of those colliding particles, PLT is expected to receive only some because of the detector's rapidity location, and acceptance region. Each histogram for a given telescope, at the end of a nibble period, receives only around 300 coincidences out of 4096 orbits as shown in figure \ref{fig:pBXfor}. The coincidence count is the boolean count of whether there was some coincidence or not.  For each telescope, coincidence count (N) is then translated to luminosity value via zero-counting algorithm in the form of $-log((4096-N)/4096)$. 
+For every bunch crossing, only ... are likely to collide as seen in Figure \ref{fig:pileup}. Out of those colliding particles, PLT is expected to receive only some because of the detector's rapidity location, and acceptance region. Each histogram for a given telescope, at the end of a nibble period, receives only around 300 coincidences out of 4096 orbits as shown in figure \ref{fig:pBXfor}. The coincidence count is the boolean count of whether there was some coincidence or not.  For each telescope, coincidence count (N) is then translated to luminosity value via the zero-counting algorithm in the form of $-log((4096-N)/4096)$. 
 
 %What is the average coincidence count per BX for all telescopes?
 
@@ -64,16 +64,18 @@ For every bunch crossing, only ... are likely to collide as seen in Figure \ref{
   \includegraphics[width=1.0\textwidth]%
     {figures/FastOR/allChNB.png}% picture filename
     \captionsetup{format=hang}    
-    \caption{Coincidence counts for filled bunches count per nibble, Fill 4444 (2015) }
+    \caption{Coincidence counts for filled bunches count per nibble, Fill 4444 (2015). }
       \label{fig:coincCount}
 \end{figure}
 
 
-%What is the average coincidence as a function of pileup and beam current?
+%What is the average coincidence as a function of the pileup and beam current?
 
 
 \begin{table}[htp]
 \begin{center}
+\caption{Time units}
+
 \begin{tabular}{| l | c |}
 \hline
 Unit & Value \\ \hline
@@ -82,7 +84,6 @@ Unit & Value \\ \hline
 1 lumi section & 64 nibbles \\ \hline
 \end{tabular}
 \end{center}
-\caption{Time units}
 \label{tbl:timeUnits}
 \end{table}%
 
@@ -96,7 +97,7 @@ Unit & Value \\ \hline
 
 
 \subsubsection{Contribution from non-colliding bunches}
-As seen in Figure \ref{fig:pBXfor}, coincidences are also recorded for non-colliding bunches. This contribution could be from background, secondary interactions, or spill-over from preceding bins. 
+As seen in Figure \ref{fig:pBXfor}, coincidences are also recorded for non-colliding bunches. This contribution could be from the background, secondary interactions, or spill-over from preceding bins. 
 
 %The contributions from these non-colliding bunches were studied and their half-life was calculated
 
@@ -119,26 +120,26 @@ As seen in Figure \ref{fig:pBXfor}, coincidences are also recorded for non-colli
 %\centering
 %\begin{minipage}{.49\textwidth}
 %  \centering
-%	\includegraphics[width=1.0\textwidth]
-%	{figures/FastOR/expoLongGap.png}
-%	%\begin{tikzpicture}
+%    \includegraphics[width=1.0\textwidth]
+%    {figures/FastOR/expoLongGap.png}
+%    %\begin{tikzpicture}
 %%    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{figures/FastOR/expoLongGap.png}};
 %%    \draw[red, dashed,very thick, rotate=0] (1.01,0.5) --(1.01,3) -- (1.01,4);
 %%    \draw [ ->] (5,3) -- (15,3);
-%%	\end{tikzpicture}
-%%    	    \caption{Coincidences vs BX}
-%	    \label{fig:forLT}
+%%    \end{tikzpicture}
+%%            \caption{Coincidences vs BX}
+%        \label{fig:forLT}
 %
 %\end{minipage}%
 %\begin{minipage}{.49\textwidth}
 %  \centering
-%	  \includegraphics[width=1.0\textwidth]%
-%	    {figures/FastOR/expoShortGap.png}% picture filename
-%%	    \caption{Coincidences vs BX, LCB}
+%      \includegraphics[width=1.0\textwidth]%
+%        {figures/FastOR/expoShortGap.png}% picture filename
+%%        \caption{Coincidences vs BX, LCB}
 %  \label{fig:forST}
 %
 %\end{minipage}
-%    	    \caption{Contribution from non-colliding bunches}
+%            \caption{Contribution from non-colliding bunches}
 %\end{figure}
 
 
@@ -146,7 +147,7 @@ As seen in Figure \ref{fig:pBXfor}, coincidences are also recorded for non-colli
   \includegraphics[width=1.0\textwidth]%
    {figures/FastOR/expoLongGap.png}
        \captionsetup{format=hang}    
-    \caption{Exponential drop in contribution from non-colliding bunches as a function of bunch separation from the last filled bunch}
+    \caption{Exponential drop in contribution from non-colliding bunches as a function of bunch separation from the last filled bunch.}
       \label{fig:forLT}
 
 \end{figure}
@@ -165,19 +166,19 @@ Figure \ref{fig:forLT} shows the exponential decay in contribution as a function
 
 %\subsubsection{Reconstruction}
 
-As described in section \ref{ssec:trigger}, slink is designed to save only some of the hit information based on some predefined trigger setup. Fig. \ref{fig:pBXslink} shows the number of tracks  per bunch crossing. The tall towers represent the the colliding bunches and the rest are the non-filled bunches. Contribution from non-filled BX is very low.
-%Slink data is saved in binary format that can be used in "offline" analysis. 
+As described in section \ref{ssec:trigger}, slink is designed to save only some of the hit information based on some predefined trigger setup. Fig. \ref{fig:pBXslink} shows the number of tracks  per bunch crossing. The tall towers represent the colliding bunches and the rest are the non-filled bunches. Contribution from non-filled BX is very low.
+%Slink data is saved in a binary format that can be used in "offline" analysis. 
 
 %Each event in slink data contains information about the hit on a pixel on a plane. Each plane is a member of a telescope, which is a member of +Z/-Z sides of telescopes. Furthermore, each telescope and thus the plane has it's own orientation in the global coordinates. 
 
 \begin{figure}[htbp!]
   \includegraphics[width=1.0\textwidth]%
     {figures/slink/tracks44Log.png}% picture filename
-    \caption{nTracks (log) per BX, Fill 4444 (2015) at random trigger}
+    \caption{nTracks (log) per BX, Fill 4444 (2015) at random trigger.}
       \label{fig:pBXslink}
 \end{figure}
 
-Given a set of hits on a set of planes, tracking algorithm is used as described in \ref{sec:telAlign} to make tracks which can then be used to parametrize the measurement dataset. For each track, reconstruction of slopes and residuals in x and y direction, and the beamspot position are described below.
+Given a set of hits on a set of planes, the tracking algorithm is used as described in \ref{sec:telAlign} to make tracks which can then be used to parametrize the measurement dataset. For each track, reconstruction of slopes and residuals in x and y-direction, and the beam spot position are described below.
 
 
 
@@ -229,17 +230,17 @@ The best fit line drawn for a set of hits on 3 planes have slopes that are defin
 %%%%describe tracking algorithm?
 %We define a track as some straight line, passing through the coordinates of each pixel on three planes. We then draw a best fit straight line to three 3 coordinates (or 2 because z is fixed), and extrapolate the straight line back to IP (because we know where the midpoint of straight line from plane 1 to plane 2 is), we get slope, and go back to negzMiddlePlane and find the x,y,z point on z=0 plane.
 %%
-%So, this track now has 3 variables, (x at z=0,y at z=0,slope-x,slope-y,residual-x,residual-y) with these variables, we can find out where the hit happened in each plane. In fact, since we know the global position of each telescope, slope and residuals themselves are enough to charactering everything about the track, given that we know which telescope this track came from.
+%So, this track now has 3 variables, (x at z=0,y at z=0,slope-x,slope-y,residual-x,residual-y) with these variables, we can find out where the hit happened in each plane. In fact, since we know the global position of each telescope, slope and residuals themselves are enough to characterising everything about the track, given that we know which telescope this track came from.
 %%
 %So, the most independent variables that we are interested in are slopes and residuals.
 %%
 %%
 %%
-%We take the three hits on three different planes (select these only), and extrapol
+%We take the three hits on three different planes (select these only), and extrapolate
 
 
 \subsubsection{Track Beamspot}
-Beamspot is defined as the position of track in the x-y plane at the interaction point i.e. at z=0 in CMS coordinate system. Figure \ref{fig:44beamspots} shows the beamspot(cm) seen by the telescopes in both sides of the interaction point from Fill 4444, 2015.  Inner blue ring is an ellipse drawn such that major and minor axis represent $3 \sigma$ of x and y mean separately. The center of the ellipse is positioned at $(\bar{x},\bar{y})$. Most of the tracks seem to be coming from within 2.25 cm of the IP, the beampipe size.  The "arms" arise due to the acceptance region of individual telescopes, which is not quite symmetric due to the absence of two telescopes in one side. 
+Beam spot is defined as the position of the track in the x-y plane at the interaction point i.e. at z=0 in CMS coordinate system. Figure \ref{fig:44beamspots} shows the beam spot(cm) seen by the telescopes in both sides of the interaction point from Fill 4444, 2015.  The inner blue ring is an ellipse drawn such that major and minor axis represent $3 \sigma$ of x and y mean separately. The center of the ellipse is positioned at $(\bar{x},\bar{y})$. Most of the tracks seem to be coming from within 2.25 cm of the IP, the beampipe size.  The "arms" arise due to the acceptance region of individual telescopes, which is not quite symmetric due to the absence of two telescopes on one side. 
 %Since 2 telescopes in one side were not taking any data, two arms on the first quadrant seem blurred.
 
 
@@ -250,21 +251,21 @@ Beamspot is defined as the position of track in the x-y plane at the interaction
   \includegraphics[width=0.8\textwidth]%
     {figures/VdM/BsPrint.png}% picture filename
     \captionsetup{format=hang}
-    \caption{Reconstruction of beam spot at Z=0 plane. Ellipses drawn at 3 sigma and 5 sigma away from the mean of X, Y}
+    \caption{Reconstruction of beam spot at Z=0 plane. Ellipses drawn at 3 sigma and 5 sigma away from the mean of X, Y.}
      \label{fig:44beamspots}
 \end{figure}
 
 
 
 \subsubsection{Track Residuals}
-Residuals from each tracks in x and y directions is just the absolute distance between the best of fit line and the position of hits in each plane. Fig. \ref{fig:44residuals} shows the x and y residuals for a sample of tracks with a landau-like shape with long tails. The high peak near 0 means that most of the tracks have small residual i.e. the hits of tracks and their best fit line are not very far off. This makes sense because the charged particles have very little time to shift directions in between planes. The discreteness in pixel size, however, introduces some smearing into the residuals. The number of tracks with larger than 3mm residual is extremely low as shown in figure \ref{fig:44residuals}.
+Residuals from each track in x and y directions are just the absolute distance between the best of fit line and the position of hits in each plane. Fig. \ref{fig:44residuals} shows the x and y residuals for a sample of tracks with a landau-like shape with long tails. The high peak near 0 means that most of the tracks have small residual i.e. the hits of tracks and their best fit line are not very far off. This makes sense because the charged particles have very little time to shift directions in between planes. The discreteness in pixel size, however, introduces some smearing into the residuals. The number of tracks with larger than 3mm residual is extremely low as shown in figure \ref{fig:44residuals}.
 
 %Slope-y, is centered around $0.027$ and slope-x is centered around $0.0$ as expected.
 
 \begin{figure}[htbp!]
   \includegraphics[width=1.0\textwidth]%
     {figures/slink/RxRy_II.png}% picture filename
-    \caption{Track residuals in x, y direction for a sample run}
+    \caption{Track residuals in x, y direction for a sample run.}
      \label{fig:44residuals}
 \end{figure}
 
